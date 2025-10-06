@@ -82,3 +82,25 @@ document.getElementById('send-message').addEventListener('submit', (e) => {
         alert('Please log in to chat.');
     }
 });
+async function fetchPopularGames() {
+    const sortsResponse = await fetch('https://games.roblox.com/v1/games/sorts?gameSortsContext=GamesDefaultSorts');
+    const sortsData = await sortsResponse.json();
+    const popularToken = sortsData.sorts.find(sort => sort.name === 'Popular').token;
+    const gamesResponse = await fetch(`https://games.roblox.com/v1/games?sortToken=${popularToken}&limit=10`);
+    const gamesData = await gamesResponse.json();
+    const placeIds = gamesData.games.map(game => game.rootPlaceId).join(',');
+    const thumbsResponse = await fetch(`https://thumbnails.roblox.com/v1/places/icons?placeIds=${placeIds}&size=150x150&format=Png&isCircular=false`);
+    const thumbsData = await thumbsResponse.json();
+    const grid = document.getElementById('games-grid');
+    gamesData.games.forEach((game, index) => {
+        const thumbUrl = thumbsData.data[index].imageUrl;
+        const card = `<div class="game-card">
+            <img src="${thumbUrl}" alt="${game.name}">
+            <p>${game.name}</p>
+            <p>By ${game.creator.name}</p>
+            <p>${game.playing} players online</p>
+        </div>`;
+        grid.innerHTML += card;
+    });
+}
+fetchPopularGames();
