@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+#header {
+    background-color: #cc0000;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    height: 50px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+nav li {
+    margin: 0 10px;
+    cursor: pointer;
+}
+#search-bar input {
+    padding: 5px;
+}
+#auth-buttons button, #user-info button {
+    background-color: white;
+    color: #cc0000;
+    border: 1px solid #cc0000;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+#main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+}
+.section {
+    margin-bottom: 20px;
+}
+.games-grid {
+    display: flex;
+    justify-content: space-around;
+}
+.game-card {
+    width: 200px;
+    height: 150px;
+    background: #ddd;
+    text-align: center;
+    line-height: 150px;
+}
+#chat {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: #fff;
+}
+#messages {
+    list-style: none;
+    padding: 0;
+    height: 200px;
+    overflow-y: auto;
+}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 1000;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    margin-top: 10px;
+}
+input, button {
+    margin-top: 5px;
+    padding: 5px;
+}
